@@ -5,6 +5,7 @@ extends Control
 @onready var background_box = $Base/Stage/BackgroundBox
 @onready var audio_player = $AudioPlayerBox
 @onready var log_box = $Base/LogBox
+@onready var functional_btn_box = $Base/FunctionalBtnBox
 
 var current_scrpit: Dictionary
 var current_line: int
@@ -43,6 +44,7 @@ func push_to_next_line():
 		current_line += 1
 	else:
 		Common.is_auto = false
+		functional_btn_box.back_to_main_scene()
 
 func integrated_node_controller(line_data: Dictionary):
 	#设置文字

@@ -37,6 +37,11 @@ func add_actor(line: Dictionary):
 						self.add_child(actor)
 						child_node_sort()
 			else:
+				var data = Common.avatar_list[_name]
+				var path = data["folder_path"]+"/states/"+line["action"]["state"]+".png" 
+				for child in get_children():
+					if child.name == _name:
+						child.set_image(path)
 				set_current(_name)
 			#下场数组
 			if !line["action"]["stage"]:

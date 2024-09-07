@@ -15,6 +15,7 @@ font = ExtResource("3_s5anl")
 font_size = 50
 
 [node name="Main" type="Control"]
+modulate = Color(0, 0, 0, 1)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
