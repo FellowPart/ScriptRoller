@@ -23,6 +23,15 @@ func set_image(path):
 		)
 	)
 
+func switch_image(path):
+	#var tween = create_tween()
+	#tween.tween_property(self,"modulate",Color("ffffff00"),0.1)
+	set_texture(
+		ImageTexture.create_from_image(
+			Image.load_from_file(path)
+		)
+	)
+
 func toggle_current(flag: bool):
 	var tween = create_tween()
 	if flag:
