@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://cuviiywfukog4"]
+
+[ext_resource type="Script" path="res://script/logLine.gd" id="1_33k05"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_biygs"]
+
+[node name="PanelContainer" type="PanelContainer"]
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_biygs")
+script = ExtResource("1_33k05")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Name" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.588235, 0.72549, 0.913725, 1)
+theme_override_colors/font_shadow_color = Color(0.395168, 0.585803, 0.772356, 1)
+theme_override_colors/font_outline_color = Color(0.556863, 0.713726, 0.870588, 1)
+theme_override_font_sizes/font_size = 25
+text = "占位"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(0, 22)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+size_flags_stretch_ratio = 9.0
+theme_override_font_sizes/normal_font_size = 20
+text = "占位"
+fit_content = true
+autowrap_mode = 2

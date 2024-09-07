@@ -1,0 +1,22 @@
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://nsm5x83r1xkx"]
+
+[ext_resource type="FontFile" uid="uid://0yvhxlgwsulx" path="res://res/font/Uranus_Pixel/Uranus_Pixel_11Px.ttf" id="1_oot30"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6qski"]
+bg_color = Color(0.435192, 0.435192, 0.435192, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vgtsd"]
+bg_color = Color(0.778445, 0.778446, 0.778445, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ti0br"]
+bg_color = Color(0.323212, 0.323213, 0.323212, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vwi0s"]
+bg_color = Color(0.362077, 0.362077, 0.362077, 1)
+
+[resource]
+Button/fonts/font = ExtResource("1_oot30")
+Button/styles/hover = SubResource("StyleBoxFlat_6qski")
+Button/styles/normal = SubResource("StyleBoxFlat_vgtsd")
+Button/styles/pressed = SubResource("StyleBoxFlat_ti0br")
+OptionButton/styles/normal = SubResource("StyleBoxFlat_vwi0s")

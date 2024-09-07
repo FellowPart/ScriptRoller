@@ -1,0 +1,240 @@
+[gd_scene load_steps=23 format=3 uid="uid://bbg4akpol5d85"]
+
+[ext_resource type="Script" path="res://script/scriptPlayer.gd" id="1_fpd1v"]
+[ext_resource type="Script" path="res://script/speaker.gd" id="3_fpyd5"]
+[ext_resource type="Script" path="res://script/backgroundBox.gd" id="4_3yo2n"]
+[ext_resource type="Texture2D" uid="uid://d1sddanfb8enl" path="res://res/pic/ground.png" id="4_rtlpr"]
+[ext_resource type="Script" path="res://script/functionalBtnBox.gd" id="4_thv73"]
+[ext_resource type="Texture2D" uid="uid://bfx7qosx22md5" path="res://res/pic/gui_icon/icons8-end-64.png" id="5_gu1tb"]
+[ext_resource type="Texture2D" uid="uid://du6nbcsbdd0id" path="res://res/pic/gui_icon/icons8-play-64.png" id="6_ujpnc"]
+[ext_resource type="Texture2D" uid="uid://dcsxyjf772ud5" path="res://res/pic/gui_icon/icons8-pause-button-64.png" id="7_xntro"]
+[ext_resource type="Texture2D" uid="uid://cgyxvwc8bm2lb" path="res://res/pic/gui_icon/icons8-circled-1-64.png" id="8_4jsna"]
+[ext_resource type="Texture2D" uid="uid://dwsogb5mesbrn" path="res://res/pic/gui_icon/icons8-circled-2-64.png" id="9_2d5l4"]
+[ext_resource type="Texture2D" uid="uid://drdvlcj2mdfwj" path="res://res/pic/gui_icon/icons8-invisible-48.png" id="10_olp24"]
+[ext_resource type="Texture2D" uid="uid://uv8reeh7jvvy" path="res://res/pic/gui_icon/icons8-visible-48.png" id="11_xi7ni"]
+[ext_resource type="Texture2D" uid="uid://cygpul14jimu6" path="res://res/pic/gui_icon/icons8-chat-message-64.png" id="12_sqrpa"]
+[ext_resource type="Script" path="res://script/actorBox.gd" id="13_ew7fl"]
+[ext_resource type="Script" path="res://script/logBox.gd" id="13_wcppn"]
+[ext_resource type="Script" path="res://script/audioPlayer.gd" id="20_f2pth"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_17xdj"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4n7nj"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kyivc"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Gradient" id="Gradient_ropcd"]
+offsets = PackedFloat32Array(0.0153374, 0.849693, 1)
+colors = PackedColorArray(0.0931608, 0.0931609, 0.0931608, 1, 0.337255, 0.337255, 0.337255, 0.545098, 0.337255, 0.337255, 0.337255, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_d37q6"]
+gradient = SubResource("Gradient_ropcd")
+fill_from = Vector2(1, 0.900855)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_snrgh"]
+texture = SubResource("GradientTexture2D_d37q6")
+
+[node name="ScriptPlayer" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fpd1v")
+
+[node name="ActorBox" type="Control" parent="."]
+layout_mode = 2
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("13_ew7fl")
+
+[node name="Base" type="PanelContainer" parent="."]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_17xdj")
+
+[node name="Stage" type="PanelContainer" parent="Base"]
+z_index = -1
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4n7nj")
+
+[node name="BackgroundBox" type="PanelContainer" parent="Base/Stage"]
+z_index = -1
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_kyivc")
+script = ExtResource("4_3yo2n")
+
+[node name="Background" type="TextureRect" parent="Base/Stage/BackgroundBox"]
+layout_mode = 2
+expand_mode = 2
+
+[node name="FunctionalBtnBox" type="MarginContainer" parent="Base"]
+z_index = 10
+layout_mode = 2
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 50
+script = ExtResource("4_thv73")
+
+[node name="SkipBtn" type="TextureButton" parent="Base/FunctionalBtnBox" groups=["cleanVision", "functionBtn"]]
+layout_mode = 2
+size_flags_horizontal = 8
+texture_normal = ExtResource("5_gu1tb")
+
+[node name="SideBox" type="VBoxContainer" parent="Base/FunctionalBtnBox"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 25
+
+[node name="PlayBtn" type="TextureButton" parent="Base/FunctionalBtnBox/SideBox" groups=["cleanVision", "functionBtn"]]
+layout_mode = 2
+size_flags_horizontal = 4
+toggle_mode = true
+texture_normal = ExtResource("6_ujpnc")
+texture_pressed = ExtResource("7_xntro")
+stretch_mode = 0
+
+[node name="SpeedBtn" type="TextureButton" parent="Base/FunctionalBtnBox/SideBox" groups=["cleanVision", "functionBtn"]]
+layout_mode = 2
+size_flags_horizontal = 4
+toggle_mode = true
+texture_normal = ExtResource("8_4jsna")
+texture_pressed = ExtResource("9_2d5l4")
+
+[node name="VisualBtn" type="TextureButton" parent="Base/FunctionalBtnBox/SideBox" groups=["functionBtn"]]
+layout_mode = 2
+size_flags_horizontal = 4
+toggle_mode = true
+button_pressed = true
+texture_normal = ExtResource("10_olp24")
+texture_pressed = ExtResource("11_xi7ni")
+
+[node name="LogBtn" type="TextureButton" parent="Base/FunctionalBtnBox/SideBox" groups=["cleanVision", "functionBtn"]]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("12_sqrpa")
+
+[node name="Speaker" type="PanelContainer" parent="Base" groups=["cleanVision"]]
+modulate = Color(1, 1, 1, 0)
+z_index = 10
+custom_minimum_size = Vector2(0, 320)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_styles/panel = SubResource("StyleBoxTexture_snrgh")
+script = ExtResource("3_fpyd5")
+
+[node name="Margin" type="MarginContainer" parent="Base/Speaker"]
+layout_mode = 2
+theme_override_constants/margin_left = 70
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_bottom = 150
+
+[node name="Back" type="TextureRect" parent="Base/Speaker/Margin" groups=["narrator"]]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("4_rtlpr")
+expand_mode = 2
+
+[node name="Avatar" type="TextureRect" parent="Base/Speaker/Margin/Back"]
+layout_mode = 2
+offset_right = 140.0
+offset_bottom = 140.0
+scale = Vector2(0.9, 0.9)
+pivot_offset = Vector2(70, 70)
+size_flags_horizontal = 0
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Margin2" type="MarginContainer" parent="Base/Speaker"]
+layout_mode = 2
+theme_override_constants/margin_left = 300
+theme_override_constants/margin_top = 20
+
+[node name="Label" type="Label" parent="Base/Speaker/Margin2" groups=["narrator"]]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.588235, 0.72549, 0.913725, 1)
+theme_override_colors/font_shadow_color = Color(0.243166, 0.406397, 0.563535, 1)
+theme_override_colors/font_outline_color = Color(0.272628, 0.441494, 0.621903, 1)
+theme_override_font_sizes/font_size = 35
+text = "占位"
+
+[node name="MarginContainer" type="MarginContainer" parent="Base/Speaker/Margin2"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 400
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Base/Speaker/Margin2/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 30
+text = "占位占位占位占位占位占位占位占位占位占位占位占位占位占位占位占位"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Base/Speaker/Margin2"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="LineTween" type="Node" parent="Base/Speaker"]
+
+[node name="LogBox" type="MarginContainer" parent="Base"]
+visible = false
+z_index = 11
+layout_mode = 2
+theme_override_constants/margin_left = 160
+theme_override_constants/margin_right = 160
+script = ExtResource("13_wcppn")
+
+[node name="Panel" type="PanelContainer" parent="Base/LogBox"]
+layout_mode = 2
+
+[node name="Scroll" type="ScrollContainer" parent="Base/LogBox/Panel"]
+layout_mode = 2
+
+[node name="Margin" type="MarginContainer" parent="Base/LogBox/Panel/Scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 100
+
+[node name="VBox" type="VBoxContainer" parent="Base/LogBox/Panel/Scroll/Margin"]
+layout_mode = 2
+
+[node name="LogTitle" type="Label" parent="Base/LogBox/Panel/Scroll/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.556863, 0.713726, 0.870588, 1)
+theme_override_font_sizes/font_size = 35
+text = "记录"
+
+[node name="LogBox" type="VBoxContainer" parent="Base/LogBox/Panel/Scroll/Margin/VBox"]
+layout_mode = 2
+
+[node name="AudioPlayerBox" type="Node" parent="."]
+script = ExtResource("20_f2pth")
+
+[connection signal="background_switch" from="Base/Stage/BackgroundBox" to="." method="auto_push"]
+[connection signal="cut_scene" from="Base/Stage/BackgroundBox" to="." method="cut_scene_effect"]
+[connection signal="play" from="Base/FunctionalBtnBox" to="." method="auto_push"]
+[connection signal="scale_change" from="Base/FunctionalBtnBox" to="." method="set_time_scale"]
+[connection signal="pressed" from="Base/FunctionalBtnBox/SkipBtn" to="Base/FunctionalBtnBox" method="back_to_main_scene"]
+[connection signal="toggled" from="Base/FunctionalBtnBox/SideBox/PlayBtn" to="Base/FunctionalBtnBox" method="auto_play"]
+[connection signal="toggled" from="Base/FunctionalBtnBox/SideBox/SpeedBtn" to="Base/FunctionalBtnBox" method="set_speed"]
+[connection signal="toggled" from="Base/FunctionalBtnBox/SideBox/VisualBtn" to="Base/FunctionalBtnBox" method="toggle_visibility"]
+[connection signal="pressed" from="Base/FunctionalBtnBox/SideBox/LogBtn" to="Base/FunctionalBtnBox" method="toggle_log_box"]
+[connection signal="gui_input" from="Base/Speaker" to="." method="mouse_input"]
+[connection signal="line_finish" from="Base/Speaker" to="." method="auto_push"]
+[connection signal="gui_input" from="Base/LogBox" to="Base/LogBox" method="close_log_box_visibility"]
+[connection signal="music_switch" from="AudioPlayerBox" to="." method="auto_push"]

@@ -1,0 +1,62 @@
+[gd_scene load_steps=4 format=3 uid="uid://bont1yhxfrmaq"]
+
+[ext_resource type="StyleBox" uid="uid://cxc87a13efmdk" path="res://res/item_bg.tres" id="1_hqbao"]
+[ext_resource type="Texture2D" uid="uid://eupewd7bj0g" path="res://res/pic/icon.svg" id="2_hweu6"]
+[ext_resource type="Script" path="res://script/avatar.gd" id="2_nad6p"]
+
+[node name="Avatar" type="PanelContainer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 100.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_styles/panel = ExtResource("1_hqbao")
+script = ExtResource("2_nad6p")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="MarginContainer3" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 10
+
+[node name="Order" type="Label" parent="HBoxContainer/MarginContainer3"]
+layout_mode = 2
+text = "序号"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="AvatarIcon" type="TextureRect" parent="HBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("2_hweu6")
+expand_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="AvatarName" type="RichTextLabel" parent="HBoxContainer/MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/normal_font_size = 25
+text = "默认名
+"
+scroll_active = false

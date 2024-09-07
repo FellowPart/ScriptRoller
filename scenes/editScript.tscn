@@ -1,0 +1,202 @@
+[gd_scene load_steps=13 format=3 uid="uid://cl4x5vttinfjo"]
+
+[ext_resource type="StyleBox" uid="uid://dmnjoq44worp4" path="res://res/bg.tres" id="1_julk8"]
+[ext_resource type="Script" path="res://script/editScript.gd" id="1_wbk6e"]
+[ext_resource type="Texture2D" uid="uid://eupewd7bj0g" path="res://res/pic/icon.svg" id="1_x4r4t"]
+[ext_resource type="Texture2D" uid="uid://d1sddanfb8enl" path="res://res/pic/ground.png" id="2_fkgbk"]
+[ext_resource type="Texture2D" uid="uid://dv7y1b2ofurc2" path="res://res/level_5.svg" id="3_pfrpb"]
+[ext_resource type="StyleBox" uid="uid://hmdo5aqfq0ve" path="res://res/slot_bg.tres" id="5_tsrdn"]
+[ext_resource type="Texture2D" uid="uid://bnqq7w2h4ru6n" path="res://res/pic/gui_icon/icons8-arrow-50.png" id="6_qyp8h"]
+[ext_resource type="PackedScene" uid="uid://dvd31dx5nr2u2" path="res://scenes/scriptRoller.tscn" id="7_lb3c2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nybkh"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b06ua"]
+bg_color = Color(0.7481, 0.7481, 0.7481, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ey4ki"]
+bg_color = Color(0.664922, 0.664922, 0.664922, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qrqi6"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="EditScript" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wbk6e")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("1_julk8")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="HBox" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MenuBar" type="MenuBar" parent="PanelContainer/MarginContainer/VBoxContainer/HBox"]
+visible = false
+layout_mode = 2
+
+[node name="PopupMenu" type="PopupMenu" parent="PanelContainer/MarginContainer/VBoxContainer/HBox/MenuBar"]
+size = Vector2i(195, 272)
+item_count = 2
+item_0/text = "test"
+item_0/icon = ExtResource("1_x4r4t")
+item_0/id = 0
+item_1/text = "test2"
+item_1/icon = ExtResource("1_x4r4t")
+item_1/id = 1
+
+[node name="PopupMenu2" type="PopupMenu" parent="PanelContainer/MarginContainer/VBoxContainer/HBox/MenuBar"]
+size = Vector2i(783, 605)
+item_count = 3
+item_0/text = "test"
+item_0/icon = ExtResource("3_pfrpb")
+item_0/id = 0
+item_1/text = "test2"
+item_1/icon = ExtResource("1_x4r4t")
+item_1/id = 1
+item_2/text = "test3"
+item_2/icon = ExtResource("2_fkgbk")
+item_2/id = 2
+
+[node name="PopupMenu3" type="PopupMenu" parent="PanelContainer/MarginContainer/VBoxContainer/HBox/MenuBar"]
+size = Vector2i(195, 272)
+item_count = 1
+item_0/text = "test"
+item_0/icon = ExtResource("1_x4r4t")
+item_0/id = 0
+
+[node name="ExitBtn" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBox"]
+custom_minimum_size = Vector2(110, 50)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_nybkh")
+theme_override_styles/hover = SubResource("StyleBoxFlat_b06ua")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ey4ki")
+icon = ExtResource("6_qyp8h")
+icon_alignment = 1
+expand_icon = true
+
+[node name="SaveBtn" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBox"]
+custom_minimum_size = Vector2(110, 50)
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/font_size = 20
+text = "保  存"
+icon_alignment = 1
+expand_icon = true
+
+[node name="CharacterAndDialog" type="HSplitContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Character" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer/CharacterAndDialog"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = ExtResource("5_tsrdn")
+
+[node name="VBox" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/CharacterAndDialog/Character"]
+layout_mode = 2
+
+[node name="Button" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/CharacterAndDialog/Character/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SetAvatar" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/CharacterAndDialog/Character/VBox/Button"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "列  表"
+icon_alignment = 1
+expand_icon = true
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/CharacterAndDialog/Character/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 20.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/MarginContainer/VBoxContainer/CharacterAndDialog/Character/VBox/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 20.0
+
+[node name="AvatarBox" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/CharacterAndDialog/Character/VBox/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="Dialog" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer/CharacterAndDialog"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 4.0
+theme_override_styles/panel = ExtResource("5_tsrdn")
+
+[node name="DialogueScroll" type="ScrollContainer" parent="PanelContainer/MarginContainer/VBoxContainer/CharacterAndDialog/Dialog"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Margin" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/CharacterAndDialog/Dialog/DialogueScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBox" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/CharacterAndDialog/Dialog/DialogueScroll/Margin"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="ScriptRoller" parent="PanelContainer/MarginContainer/VBoxContainer/CharacterAndDialog/Dialog/DialogueScroll/Margin/VBox" instance=ExtResource("7_lb3c2")]
+layout_mode = 2
+
+[node name="AvatarSelecter" type="CenterContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/AvatarSelecter"]
+custom_minimum_size = Vector2(500, 400)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qrqi6")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/AvatarSelecter/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 10
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/AvatarSelecter/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/AvatarSelecter/PanelContainer/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_right = 5
+
+[node name="AvatarSelecterBox" type="VBoxContainer" parent="PanelContainer/AvatarSelecter/PanelContainer/MarginContainer/ScrollContainer/MarginContainer"]
+layout_mode = 2
+
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBox/ExitBtn" to="." method="back_to_main_scene"]
+[connection signal="gui_input" from="PanelContainer/AvatarSelecter" to="." method="full_screen_exit_avatar_list"]

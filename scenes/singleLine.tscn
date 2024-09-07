@@ -1,0 +1,93 @@
+[gd_scene load_steps=4 format=3 uid="uid://deimmbev856wx"]
+
+[ext_resource type="Script" path="res://script/singleLine.gd" id="1_3pv6f"]
+[ext_resource type="Texture2D" uid="uid://eupewd7bj0g" path="res://res/pic/icon.svg" id="2_lvou8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_wjrr2"]
+font_size = 25
+
+[node name="SingleLine" type="PanelContainer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 100.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+script = ExtResource("1_3pv6f")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="AvatarIcon" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(85, 85)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource("2_lvou8")
+expand_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="AvatarName" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "默认名"
+label_settings = SubResource("LabelSettings_wjrr2")
+
+[node name="State" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "状态"
+
+[node name="AvatarOptionButton" type="OptionButton" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="StateOptionButton" type="OptionButton" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+toggle_mode = true
+button_pressed = true
+text = "上场"
+
+[node name="Line" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 20
+text = "默认句"
+fit_content = true
+
+[node name="TextEdit" type="TextEdit" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 20
+text = "编辑"
+wrap_mode = 1
+
+[node name="EditButton" type="Button" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "编辑"
+
+[node name="DeleteButton" type="Button" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "删除"
+
+[connection signal="item_selected" from="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/AvatarOptionButton" to="." method="set_op_state"]
+[connection signal="toggled" from="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/Button" to="." method="set_stage"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/DeleteButton" to="." method="self_destory"]

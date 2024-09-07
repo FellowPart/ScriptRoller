@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=3 uid="uid://b5h3vhfanblhy"]
+
+[ext_resource type="Script" path="res://script/scriptItem.gd" id="1_t00r5"]
+[ext_resource type="Texture2D" uid="uid://baxs845bx3xbs" path="res://res/pic/gui_icon/icons8-cross-48.png" id="2_i83uu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h18gu"]
+bg_color = Color(0.54902, 0.54902, 0.54902, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cdcp1"]
+bg_color = Color(0.54902, 0.54902, 0.54902, 0.145098)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sjbvb"]
+bg_color = Color(1, 1, 1, 0)
+
+[node name="Control" type="PanelContainer"]
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+script = ExtResource("1_t00r5")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_font_sizes/font_size = 18
+text = "占位"
+
+[node name="DeleteBtn" type="Button" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(35, 35)
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_styles/normal = SubResource("StyleBoxFlat_h18gu")
+theme_override_styles/hover = SubResource("StyleBoxFlat_cdcp1")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_sjbvb")
+icon = ExtResource("2_i83uu")
+expand_icon = true
+
+[connection signal="gui_input" from="." to="." method="self_click"]
+[connection signal="mouse_entered" from="." to="." method="mouse_enter"]
+[connection signal="mouse_exited" from="." to="." method="mouse_exit"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/DeleteBtn" to="." method="self_destory"]

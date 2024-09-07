@@ -1,0 +1,66 @@
+[gd_scene load_steps=3 format=3 uid="uid://nusn0vqirf75"]
+
+[ext_resource type="Script" path="res://script/narratorSetter.gd" id="1_38apb"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_wjrr2"]
+font_size = 25
+
+[node name="NarratorSetter" type="PanelContainer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 154.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+script = ExtResource("1_38apb")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "旁白"
+label_settings = SubResource("LabelSettings_wjrr2")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_right = 50
+
+[node name="AsideEdit" type="TextEdit" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer" groups=["editNode"]]
+visible = false
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+size_flags_vertical = 3
+text = "编辑"
+placeholder_text = "输入文字"
+wrap_mode = 1
+
+[node name="AsideLabel" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer" groups=["editNode"]]
+layout_mode = 2
+text = "编辑旁白"
+fit_content = true
+
+[node name="EditButton" type="Button" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "编辑"
+
+[node name="DeleteButton" type="Button" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "删除"
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/EditButton" to="." method="edit"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/DeleteButton" to="." method="self_destory"]
